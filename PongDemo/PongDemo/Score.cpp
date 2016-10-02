@@ -29,6 +29,13 @@ void Score::updateScore(TTF_Font* font, SDL_Renderer* renderer) {
 SDL_Texture* Score::getPointer() {
 	return _ptr;
 }
-SDL_Rect Score::getRect() {
+SDL_Rect Score::getRect() const{
 	return _rect;
+}
+
+void Score::leftGoal() {
+	_leftScore++;
+}
+void Score::rightGoal() {
+	_rightScore++;
 }

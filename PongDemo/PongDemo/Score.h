@@ -17,13 +17,9 @@ public:
 
 	void updateScore(TTF_Font* font, SDL_Renderer* renderer);
 	SDL_Texture* getPointer();
-	SDL_Rect getRect();
+	SDL_Rect getRect() const;
 
-	void leftGoal() {
-		_leftScore++;
-	}
-	void rightGoal() {
-		_rightScore++;
-	}
+	void leftGoal();
+	void rightGoal();
 };
 
