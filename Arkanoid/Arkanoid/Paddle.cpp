@@ -2,15 +2,34 @@
 #include "Config.h"
 
 
-Paddle::Paddle(float x, float y) : Entity(x, y, Config::PADDLE_WIDTH, Config::BRICK_HEIGHT)
+Paddle::Paddle(float x, float y) : Entity(x, y, Config::PADDLE_WIDTH, Config::BRICK_HEIGHT), _targetX(0)
 {
 	_color = Config::PADDLE_COLOR;
 }
 
 void Paddle::update() 
 {
-	Entity::update();
-	_vx *= 0.98;
+	if (_targetX == 0) {
+		return;
+	}
+	float dx = _targetX - centerX();
+	_x += (dx*Config::EASING);
+	checkBoundaries();	
+}
+
+void Paddle::checkBoundaries()
+{
+	if (_x < 0.0f) {
+		_x = 0.0f;
+	}
+	else if (_x > Config::WIN_WIDTH - _width) {
+		_x = static_cast<float>(Config::WIN_WIDTH - _width);
+	}
+}
+
+void Paddle::onMouseMove(int mousex, int mousey)
+{
+	_targetX = mousex;
 }
 
 Paddle::~Paddle()

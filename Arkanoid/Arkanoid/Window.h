@@ -11,6 +11,6 @@ class Window
 public:
 	Window(const std::string& title, int width = 1280, int height = 720);
 	~Window();
-	SDL_Window* getPointer();
+	SDL_Window* getPointer() const;
 };
 

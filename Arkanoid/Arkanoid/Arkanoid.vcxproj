@@ -168,6 +168,7 @@
     <ClInclude Include="Entity.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Paddle.h" />
+    <ClInclude Include="Random.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="SDLSystem.h" />
     <ClInclude Include="Window.h" />

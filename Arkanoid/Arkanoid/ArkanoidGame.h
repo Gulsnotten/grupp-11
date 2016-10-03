@@ -1,8 +1,11 @@
 #pragma once
 #include <vector>
+#include "Config.h"
 #include "SDLSystem.h"
 #include "Renderer.h"
 #include "InputManager.h"
+#include "Window.h"
+#include <memory>
 class Entity;
 class Paddle;
 class Ball;
@@ -10,26 +13,21 @@ class Brick;
 
 class ArkanoidGame
 {
-	//collisiondetection
-	//checkboundaries	
-	//_inputManager
-	//launch();
-	//getRandomNumber
-
 	void readInput();
 	void update();
 	void render();
+	void cleanup();
+	void checkWin();
 	void createEntities();
 	void destroyEntities();
 
 	SDLSystem _sdl;
-	Renderer _r;
+	Window _window;
+	Renderer _r{ _window };
 	InputManager _input;
-	Paddle* _paddle;
-	Ball* _ball;
-	std::vector<Entity*> _entities;
-
-	bool _isQuitRequested;
+	std::shared_ptr<Paddle> _paddle;
+	std::shared_ptr<Ball> _ball;
+	std::vector<std::shared_ptr<Entity>> _entities;
 
 public:
 	ArkanoidGame();

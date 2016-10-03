@@ -15,7 +15,7 @@ Window::~Window()
 	SDL_DestroyWindow(_ptr);
 }
 
-SDL_Window* Window::getPointer()
+SDL_Window* Window::getPointer() const
 {
 	assert(_ptr != nullptr);
 	return _ptr;
