@@ -1,3 +1,10 @@
-﻿  ArkanoidGame.cpp
+﻿  Entity.cpp
+  Generating Code...
+  Compiling...
+  Paddle.cpp
+  Brick.cpp
+  Ball.cpp
+  ArkanoidGame.cpp
+  Generating Code...
   Arkanoid.vcxproj -> C:\Users\alexa\Documents\Visual Studio 2015\Projects\grupp-11\Arkanoid\Debug\Arkanoid.exe
   Arkanoid.vcxproj -> C:\Users\alexa\Documents\Visual Studio 2015\Projects\grupp-11\Arkanoid\Debug\Arkanoid.pdb (Full PDB)
