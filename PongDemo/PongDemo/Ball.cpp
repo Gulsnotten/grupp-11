@@ -49,7 +49,7 @@ void Ball::collide(Side side, const Paddle& paddle) {
 	SDL_Rect padrect = paddle.GetRect();
 	int pady = padrect.y + padrect.h / 2;
 
-	vely = (double)(bally - pady) / (padrect.h / 4.0);
+	vely = (double)(bally - pady) / (padrect.h / 8.0);
 }
 void Ball::checkBounds() {
 	if (rect.y < Playfield::MARGIN) {

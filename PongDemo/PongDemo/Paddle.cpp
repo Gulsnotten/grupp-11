@@ -36,10 +36,10 @@ GameObject::Side Paddle::GetSide() {
 
 void Paddle::update() {
 	if (pressingUp) {
-		rect.y -= SPEED;
+		rect.y -= Paddle::SPEED;
 	}
 	if (pressingDown) {
-		rect.y += SPEED;
+		rect.y += Paddle::SPEED;
 	}
 }
 void Paddle::checkBounds() {

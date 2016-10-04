@@ -7,7 +7,7 @@ class Playfield;
 
 class Paddle : public GameObject
 {
-	static const int SPEED = 3;
+	static const int SPEED = 8;
 
 	bool pressingUp;
 	bool pressingDown;

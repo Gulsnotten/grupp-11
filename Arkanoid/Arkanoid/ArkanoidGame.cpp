@@ -48,30 +48,13 @@ void ArkanoidGame::destroyEntities()
 
 void ArkanoidGame::run()
 {
-	int frameStart = 0;
-	int frameTime = 0;
-	int frameCount = 0;
-	unsigned int nextTime = SDL_GetTicks() + Config::SAMPLE_INTERVAL;
 	while (!_input.quitRequested()) {
-		frameStart = SDL_GetTicks();
 		readInput();
 		update();
 		render();
 		cleanup();
 		checkWin();
-		frameTime = SDL_GetTicks() - frameStart;
-		if (frameTime < Config::DELAY_TIME) {
-			SDL_Delay(Config::DELAY_TIME - frameTime);
-		}
-		frameCount++;
-		if (nextTime < SDL_GetTicks()) {
-			frameCount = frameCount / (Config::SAMPLE_INTERVAL / 1000);
-			std::string fps{ Config::TITLE + " FPS: " + std::to_string(frameCount) };
-			SDL_SetWindowTitle(_window.getPointer(), fps.c_str());
-			frameCount = 0;
-			nextTime = SDL_GetTicks() + Config::SAMPLE_INTERVAL;
-		}
-		// Den här FPS grejen måste flyttas till en separat class
+		fps.Delay(Config::FPS);
 	}
 }
 

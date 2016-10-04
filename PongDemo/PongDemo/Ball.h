@@ -5,7 +5,7 @@
 
 class Ball : public GameObject
 {
-	static const int SPEED = 4;
+	static const int SPEED = 6;
 	
 	int velx;
 	double vely;
