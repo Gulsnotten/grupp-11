@@ -4,7 +4,7 @@
 #include "Ball.h"
 #include "Paddle.h"
 #include "Playfield.h"
-#include "FPS_Helper.h"
+#include "FPS_Limiter.h"
 #include "Font.h"
 #include "Score.h"
 
@@ -13,7 +13,7 @@ class PongGame
 	SDL_System _sdl{SDL_INIT_VIDEO};
 	Renderer _renderer;
 	Font _font;
-	FPS_Helper fps;
+	FPS_Limiter fps;
 
 	Playfield _playfield;
 	Paddle _leftPaddle = Paddle(GameObject::Side::left);

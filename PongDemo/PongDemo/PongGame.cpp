@@ -15,8 +15,9 @@ PongGame::~PongGame()
 void PongGame::run(){
 	serveBall(GameObject::Side::left);
 
-	while (_isRunning)
+	while (_isRunning) {
 		update();
+	}
 }
 
 void PongGame::render() {
@@ -111,11 +112,13 @@ void PongGame::checkCollision() {
 	SDL_Rect ballrect = _ball.GetRect();
 	SDL_Rect result;
 
-	if (SDL_IntersectRect(&ballrect, &_leftPaddle.GetRect(), &result))
+	if (SDL_IntersectRect(&ballrect, &_leftPaddle.GetRect(), &result)) {
 		_ball.collide(GameObject::Side::left, _leftPaddle);
+	}
 
-	if (SDL_IntersectRect(&ballrect, &_rightPaddle.GetRect(), &result))
+	if (SDL_IntersectRect(&ballrect, &_rightPaddle.GetRect(), &result)) {
 		_ball.collide(GameObject::Side::right, _rightPaddle);
+	}
 }
 void PongGame::serveBall(GameObject::Side side) {
 	_score.updateScore(_font.getPointer(), _renderer.getPointer());

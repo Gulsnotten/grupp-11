@@ -14,10 +14,12 @@ Paddle::Paddle(Side side_) {
 	
 	side = side_;
 
-	if (side == Side::left)
+	if (side == Side::left) {
 		rect.x = Playfield::MARGIN;
-	else
+	}
+	else {
 		rect.x = Playfield::WIDTH - WIDTH - Playfield::MARGIN;
+	}
 
 	pressingUp = false;
 	pressingDown = false;
@@ -33,17 +35,21 @@ GameObject::Side Paddle::GetSide() {
 }
 
 void Paddle::update() {
-	if (pressingUp)
+	if (pressingUp) {
 		rect.y -= SPEED;
-	if (pressingDown)
+	}
+	if (pressingDown) {
 		rect.y += SPEED;
+	}
 }
 void Paddle::checkBounds() {
-	if (rect.y < Playfield::MARGIN)
+	if (rect.y < Playfield::MARGIN) {
 		rect.y = Playfield::MARGIN;
+	}
 
-	if (rect.y + rect.h > Playfield::HEIGHT - Playfield::MARGIN)
+	if (rect.y + rect.h > Playfield::HEIGHT - Playfield::MARGIN) {
 		rect.y = Playfield::HEIGHT - Playfield::MARGIN - rect.h;
+	}
 }
 void Paddle::pressUp(bool b) {
 	pressingUp = b;

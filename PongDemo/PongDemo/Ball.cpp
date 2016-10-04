@@ -38,10 +38,12 @@ void Ball::collide(Side side, const Paddle& paddle) {
 	if ((velx > 0 && side == Side::left) || (velx < 0 && side == Side::right))
 		return;
 
-	if (side == Side::left)
+	if (side == Side::left) {
 		velx = SPEED;
-	else
+	}
+	else {
 		velx = -SPEED;
+	}
 
 	int bally = rect.y + rect.h / 2;
 	SDL_Rect padrect = paddle.GetRect();

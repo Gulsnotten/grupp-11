@@ -5,8 +5,9 @@
 Renderer::Renderer()
 {
 	_ptr = SDL_CreateRenderer(_window.getPointer(), -1, SDL_RENDERER_ACCELERATED);
-	if (_ptr == nullptr)
+	if (_ptr == nullptr) {
 		throw std::runtime_error(SDL_GetError());
+	}
 }
 
 

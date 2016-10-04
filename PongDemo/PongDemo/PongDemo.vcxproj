@@ -147,7 +147,7 @@
   <ItemGroup>
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="Font.cpp" />
-    <ClCompile Include="FPS_Helper.cpp" />
+    <ClCompile Include="FPS_Limiter.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="PongGame.cpp" />
     <ClCompile Include="Paddle.cpp" />
@@ -161,7 +161,7 @@
   <ItemGroup>
     <ClInclude Include="Ball.h" />
     <ClInclude Include="Font.h" />
-    <ClInclude Include="FPS_Helper.h" />
+    <ClInclude Include="FPS_Limiter.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="PongGame.h" />
     <ClInclude Include="Paddle.h" />

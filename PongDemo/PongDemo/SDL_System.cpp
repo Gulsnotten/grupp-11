@@ -3,10 +3,12 @@
 
 SDL_System::SDL_System(Uint32 flags = SDL_INIT_VIDEO)
 {
-	if (SDL_Init(flags) != 0)
+	if (SDL_Init(flags) != 0) {
 		throw std::runtime_error(SDL_GetError());
-	if (TTF_Init() != 0)
+	}
+	if (TTF_Init() != 0) {
 		throw std::runtime_error(TTF_GetError());
+	}
 }
 
 

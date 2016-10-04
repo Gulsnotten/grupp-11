@@ -6,8 +6,9 @@ const int Font::POINTS = 26;
 Font::Font()
 {
 	_ptr = TTF_OpenFont(FILE.c_str(), POINTS);
-	if (_ptr == nullptr)
+	if (_ptr == nullptr) {
 		throw std::runtime_error(TTF_GetError());
+	}
 }
 
 
