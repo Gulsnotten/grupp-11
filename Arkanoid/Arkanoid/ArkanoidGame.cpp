@@ -9,7 +9,7 @@
 
 ArkanoidGame::ArkanoidGame() : _window { Config::TITLE, Config::WIN_WIDTH, Config::WIN_HEIGHT }, _paddle{ nullptr }, _ball{ nullptr }
 {
-	createEntities();
+	startGame();
 }
 
 ArkanoidGame::~ArkanoidGame()
@@ -22,8 +22,9 @@ ArkanoidGame::~ArkanoidGame()
 void ArkanoidGame::createEntities()
 {
 	destroyEntities();
+
 	float halfPaddle = (Config::PADDLE_WIDTH / 2);
-	_paddle = std::make_shared<Paddle>(Config::CENTER_X - halfPaddle, Config::WIN_HEIGHT-100.0f);
+	_paddle = std::make_shared<Paddle>(Config::CENTER_X - halfPaddle, Config::WIN_HEIGHT - 100.0f);
 	_ball = std::make_shared<Ball>(0.0f, 0.0f);
 	_ball->_x = _paddle->centerX() - _ball->halfWidth();
 	_ball->_y = _paddle->top() - _ball->_height;
@@ -31,7 +32,7 @@ void ArkanoidGame::createEntities()
 		float x = i*(Config::BRICK_WIDTH + Config::PADDING);
 		for (int j = 1; j < Config::ROWS; j++) {
 			float y = j*(Config::BRICK_HEIGHT + Config::PADDING);
-			_entities.push_back(std::make_shared<Brick>(x, y));
+			_entities.push_back(std::make_shared<Brick>(x, y, Config::ROWS - j));
 		}
 	}
 	_entities.push_back(_paddle);
@@ -64,6 +65,11 @@ void ArkanoidGame::update()
 		e->update();
 		if (e == _ball) continue;
 		if (isColliding(*_ball, *e)) {
+			if (e != _paddle) {
+				gameSession.addScore(Config::BONUS_POINTS);
+				gameMessage.bonus();
+			}
+
 			e->onCollision(*_ball);
 			_ball->onCollision(*e);
 		}
@@ -72,8 +78,7 @@ void ArkanoidGame::update()
 
 void ArkanoidGame::checkWin() {
 	if (_ball->_y > (_paddle)->_y + _paddle->_height) {
-		destroyEntities();
-		createEntities();
+		roundOver();
 	}
 }
 
@@ -94,6 +99,11 @@ void ArkanoidGame::cleanup()
 {
 	for (int i = _entities.size() - 1; i >= 0; i--) {
 		if (_entities[i]->_isDead) {
+			int add_score = _entities[i]->getScore();
+			if (add_score != 0) {
+				gameSession.addScore(add_score);
+				gameMessage.score(gameSession);
+			}
 			//_entities.erase(_entities.begin() + i);  <- långsammare
 			std::swap(_entities[i], _entities.back());
 			_entities.pop_back();
@@ -113,6 +123,25 @@ void ArkanoidGame::readInput() {
 	}
 }
 
-
+void ArkanoidGame::nextRound() {
+	createEntities();
+	gameMessage.nextRound(gameSession);
+}
+void ArkanoidGame::roundOver() {
+	gameSession.looseLife();
+	if (gameSession.isGameOver()) {
+		gameMessage.gameOver(gameSession);
+		startGame();
+	}
+	else {
+		nextRound();
+	}
+}
+void ArkanoidGame::startGame() {
+	destroyEntities();
+	createEntities();
+	gameSession.reset();
+	gameMessage.start();
+}
 
 

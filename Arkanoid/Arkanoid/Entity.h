@@ -26,6 +26,8 @@ public:
 	virtual void onCollision(const Entity& that);
 	void getBounds(SDL_Rect& r) const;
 
+	virtual int getScore();
+
 	Entity(float x, float y, int width, int height);
 	virtual ~Entity();
 };

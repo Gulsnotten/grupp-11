@@ -154,6 +154,8 @@
     <ClCompile Include="Brick.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="FPS_Limiter.cpp" />
+    <ClCompile Include="GameMessage.cpp" />
+    <ClCompile Include="GameSession.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Paddle.cpp" />
@@ -168,6 +170,8 @@
     <ClInclude Include="Config.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="FPS_Limiter.h" />
+    <ClInclude Include="GameMessage.h" />
+    <ClInclude Include="GameSession.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Paddle.h" />
     <ClInclude Include="Random.h" />

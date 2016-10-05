@@ -16,9 +16,7 @@ void Entity::update()
 
 void Entity::onCollision(const Entity & that)
 {
-	_color.r = Random::color();
-	_color.g = Random::color();
-	_color.b = Random::color();
+	
 }
 
 void Entity::getBounds(SDL_Rect & r) const
@@ -27,6 +25,11 @@ void Entity::getBounds(SDL_Rect & r) const
 	r.y = static_cast<int>(_y);
 	r.w = static_cast<int>(_width);
 	r.h = static_cast<int>(_height);
+}
+
+int Entity::getScore()
+{
+	return 0;
 }
 
 float Entity::centerX() const
