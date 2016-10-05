@@ -23,11 +23,8 @@ void ArkanoidGame::createEntities()
 {
 	destroyEntities();
 
-	float halfPaddle = (Config::PADDLE_WIDTH / 2);
-	_paddle = std::make_shared<Paddle>(Config::CENTER_X - halfPaddle, Config::WIN_HEIGHT - 100.0f);
-	_ball = std::make_shared<Ball>(0.0f, 0.0f);
-	_ball->_x = _paddle->centerX() - _ball->halfWidth();
-	_ball->_y = _paddle->top() - _ball->_height;
+	ResetBallAndPaddle();
+	
 	for (int i = 1; i < Config::COLUMNS; i++) {
 		float x = i*(Config::BRICK_WIDTH + Config::PADDING);
 		for (int j = 1; j < Config::ROWS; j++) {
@@ -35,9 +32,23 @@ void ArkanoidGame::createEntities()
 			_entities.push_back(std::make_shared<Brick>(x, y, Config::ROWS - j));
 		}
 	}
+	//detta borde flyttas till en class
+}
+
+void ArkanoidGame::ResetBallAndPaddle() {
+	if (_ball != nullptr || _paddle != nullptr) {
+		_ball->_isDead = true;
+		_paddle->_isDead = true;
+	}
+
+	float halfPaddle = (Config::PADDLE_WIDTH / 2);
+	_paddle = std::make_shared<Paddle>(Config::CENTER_X - halfPaddle, Config::WIN_HEIGHT - 100.0f);
+	_ball = std::make_shared<Ball>(0.0f, 0.0f);
+	_ball->_x = _paddle->centerX() - _ball->halfWidth();
+	_ball->_y = _paddle->top() - _ball->_height;
+
 	_entities.push_back(_paddle);
 	_entities.push_back(_ball);
-	//detta borde flyttas till en class
 }
 
 void ArkanoidGame::destroyEntities()
@@ -124,7 +135,7 @@ void ArkanoidGame::readInput() {
 }
 
 void ArkanoidGame::nextRound() {
-	createEntities();
+	ResetBallAndPaddle();
 	gameMessage.nextRound(gameSession);
 }
 void ArkanoidGame::roundOver() {

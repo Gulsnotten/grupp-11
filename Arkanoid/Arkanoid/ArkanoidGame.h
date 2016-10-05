@@ -27,6 +27,7 @@ class ArkanoidGame
 	void nextRound();
 	void roundOver();
 	void startGame();
+	void ResetBallAndPaddle();
 	GameSession gameSession;
 	GameMessage gameMessage;
 
