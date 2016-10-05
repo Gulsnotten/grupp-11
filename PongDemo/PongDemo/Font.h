@@ -1,3 +1,9 @@
+/*
+Team 11
+Alexander Granell & Erik Säll
+10/6/2016
+*/
+
 #pragma once
 #include "SDL_System.h"
 using namespace std;

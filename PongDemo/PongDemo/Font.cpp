@@ -1,3 +1,9 @@
+/*
+Team 11
+Alexander Granell & Erik Säll
+10/6/2016
+*/
+
 #include "Font.h"
 
 const string Font::FILE = "OpenSans-Bold.ttf";

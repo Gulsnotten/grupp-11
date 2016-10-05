@@ -1,3 +1,9 @@
+/*
+Team 11
+Alexander Granell & Erik Säll
+10/6/2016
+*/
+
 #include "Window.h"
 
 Window::Window(const std::string& title, int width = 640, int height = 360)
